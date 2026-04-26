@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <title>متابعة الشكاوى - بوابة الانشغالات</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+    
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f8fafc;
+      --color-background-tertiary: #f1f5f9;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94a3b8;
+      --color-border-primary: #cbd5e1;
+      --color-border-secondary: #e2e8f0;
+      --color-border-tertiary: #f1f5f9;
+      --color-brand: #1B5E3F;
+      --color-brand-hover: #0F3D28;
+      --color-brand-light: #E8F4F0;
+      --border-radius-md: 8px;
+      --border-radius-lg: 16px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--color-background-tertiary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    .c-nav {
+      background: var(--color-background-primary);
+      border-bottom: 1px solid var(--color-border-secondary);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .c-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 16px;
+      color: var(--color-text-primary); text-decoration: none;
+    }
+    .c-logo-icon {
+      width: 32px; height: 32px;
+      background: var(--color-brand);
+      border-radius: var(--border-radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .c-logo-icon svg { width: 18px; height: 18px; fill: var(--color-brand-light); }
+    .c-nav-links {
+      display: flex; gap: 24px; align-items: center;
+    }
+    .c-nav-link {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .c-nav-link:hover, .c-nav-link.active { color: var(--color-brand); }
+    .user-profile {
+      display: flex; align-items: center; gap: 8px; cursor: pointer;
+    }
+    .user-avatar {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: var(--color-brand-light); color: var(--color-brand);
+      display: flex; align-items: center; justify-content: center;
+      font-weight: 700; font-size: 14px; border: 1px solid var(--color-brand);
+    }
+
+    /* MAIN */
+    .c-main {
+      flex: 1; padding: 40px 2rem; display: flex; justify-content: center;
+    }
+    .c-container {
+      width: 100%; max-width: 1000px;
+    }
+    
+    .page-header {
+      margin-bottom: 24px; display: flex; justify-content: space-between; align-items: flex-end;
+    }
+    .page-header-text h1 {
+      font-size: 24px; color: var(--color-text-primary); margin-bottom: 4px;
+    }
+    .page-header-text p {
+      font-size: 14px; color: var(--color-text-secondary);
+    }
+
+    /* FILTERS */
+    .filters-bar {
+      display: flex; gap: 16px; margin-bottom: 24px; flex-wrap: wrap;
+    }
+    .filter-group {
+      display: flex; flex-direction: column; gap: 6px; flex: 1; min-width: 200px;
+    }
+    .filter-label {
+      font-size: 12px; font-weight: 700; color: var(--color-text-secondary);
+    }
+    .c-select, .c-input {
+      width: 100%; border: 1px solid var(--color-border-primary);
+      border-radius: var(--border-radius-md); padding: 10px 14px;
+      font-size: 14px; font-family: 'Cairo', sans-serif;
+      background: var(--color-background-primary);
+      color: var(--color-text-primary); outline: none;
+    }
+    .c-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat; background-position: left 12px center;
+      background-size: 16px; cursor: pointer;
+    }
+
+    /* TABLE */
+    .table-card {
+      background: var(--color-background-primary);
+      border: 1px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+      overflow-x: auto;
+    }
+    .c-table {
+      width: 100%; border-collapse: collapse; text-align: right;
+    }
+    .c-table th {
+      background: var(--color-background-secondary);
+      padding: 14px 20px; font-size: 13px; font-weight: 700;
+      color: var(--color-text-secondary); border-bottom: 1px solid var(--color-border-secondary);
+    }
+    .c-table td {
+      padding: 16px 20px; font-size: 14px; color: var(--color-text-primary);
+      border-bottom: 1px solid var(--color-border-secondary);
+      vertical-align: middle;
+    }
+    .c-table tr:last-child td { border-bottom: none; }
+    .c-table tbody tr:hover { background: var(--color-background-secondary); }
+
+    .id-col { font-weight: 700; color: var(--color-text-secondary); }
+    .title-col { font-weight: 600; }
+    .title-col a { color: var(--color-text-primary); text-decoration: none; }
+    .title-col a:hover { color: var(--color-brand); }
+    .date-col { color: var(--color-text-secondary); font-size: 13px; }
+
+    .badge {
+      display: inline-flex; align-items: center; padding: 4px 12px;
+      border-radius: 100px; font-size: 12px; font-weight: 700; whitespace: nowrap;
+    }
+    .badge.new { background: #EFF6FF; color: #3B82F6; }
+    .badge.pending { background: #FEF3C7; color: #D97706; }
+    .badge.closed { background: #D1FAE5; color: #059669; }
+
+    .action-btn {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 32px; height: 32px; border-radius: var(--border-radius-md);
+      background: var(--color-background-tertiary); color: var(--color-text-secondary);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .action-btn:hover { background: var(--color-brand); color: white; }
+
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="c-nav">
+    <a href="homeUser.html" class="c-logo">
+      <div class="c-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      بوابة الانشغالات
+    </a>
+    <div class="c-nav-links">
+      <a href="homeUser.html" class="c-nav-link">الرئيسية</a>
+      <a href="track_complaints.html" class="c-nav-link active">متابعة الشكاوى</a>
+      <div class="user-profile">
+        <span style="font-size: 13px; font-weight: 600; color: var(--color-text-primary);">محمد ع.</span>
+        <div class="user-avatar">م</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="c-main">
+    <div class="c-container">
+      
+      <div class="page-header">
+        <div class="page-header-text">
+          <h1>متابعة الشكاوى التاريخية والنشطة</h1>
+          <p>قم بالبحث وتصفية شكاواك للوصول السريع إلى حالة المعالجة</p>
+        </div>
+      </div>
+
+      <div class="filters-bar">
+        <div class="filter-group">
+          <label class="filter-label">حالة الشكوى</label>
+          <select class="c-select">
+            <option value="all">الكل</option>
+            <option value="new">جديدة</option>
+            <option value="pending">قيد المعالجة</option>
+            <option value="closed">مغلقة / تم الحل</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">التاريخ (من - إلى)</label>
+          <input type="date" class="c-input" />
+        </div>
+        <div class="filter-group">
+          <label class="filter-label">بحث برقم الشكوى</label>
+          <input type="text" class="c-input" placeholder="مثال: #C-104 ..." />
+        </div>
+      </div>
+
+      <div class="table-card">
+        <table class="c-table">
+          <thead>
+            <tr>
+              <th>رقم الشكوى</th>
+              <th>عنوان الشكوى</th>
+              <th>الحالة</th>
+              <th>تاريخ الإنشاء</th>
+              <th>الإجراء</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="id-col">#C-104</td>
+              <td class="title-col"><a href="complaint_details.html">تأخر إصدار شهادة التكوين لمستوى التقني السامي</a></td>
+              <td><span class="badge pending">قيد المعالجة</span></td>
+              <td class="date-col">26 أبريل 2026</td>
+              <td>
+                <a href="complaint_details.html" class="action-btn" title="عرض التفاصيل">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"/></svg>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="id-col">#C-099</td>
+              <td class="title-col"><a href="complaint_details.html">اقتراح تحديث منصة التسجيل عن بعد</a></td>
+              <td><span class="badge new">جديدة</span></td>
+              <td class="date-col">10 أبريل 2026</td>
+              <td>
+                <a href="complaint_details.html" class="action-btn">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"/></svg>
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td class="id-col">#C-042</td>
+              <td class="title-col"><a href="complaint_details.html">خلل في موقع استخراج كشوف النقاط</a></td>
+              <td><span class="badge closed">مغلقة</span></td>
+              <td class="date-col">26 مارس 2026</td>
+              <td>
+                <a href="complaint_details.html" class="action-btn">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path d="M2.458 12C3.732 7.943 7.522 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"/></svg>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</body>
+</html>

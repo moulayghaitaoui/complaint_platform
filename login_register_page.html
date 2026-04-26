@@ -1,0 +1,664 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+
+  :root {
+    --color-background-primary: #ffffff;
+    --color-background-secondary: #f8fafc;
+    --color-background-tertiary: #f1f5f9;
+    --color-text-primary: #0f172a;
+    --color-text-secondary: #475569;
+    --color-text-tertiary: #94a3b8;
+    --color-border-primary: #cbd5e1;
+    --color-border-secondary: #e2e8f0;
+    --color-border-tertiary: #f1f5f9;
+    --border-radius-md: 8px;
+    --border-radius-lg: 16px;
+  }
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .lr-root {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    background: var(--color-background-tertiary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* NAV */
+  .lr-nav {
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 2rem;
+    height: 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .lr-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--color-text-primary);
+    text-decoration: none;
+  }
+
+  .lr-logo-icon {
+    width: 28px;
+    height: 28px;
+    background: #1B5E3F;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .lr-logo-icon svg {
+    width: 15px;
+    height: 15px;
+    fill: #E8F4F0;
+  }
+
+  .lr-nav-back {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    font-family: 'Cairo', sans-serif;
+  }
+
+  .lr-nav-back:hover {
+    color: var(--color-text-primary);
+  }
+
+  /* LAYOUT */
+  .lr-body {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 16px;
+  }
+
+  .lr-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    width: 100%;
+    max-width: 440px;
+    overflow: hidden;
+  }
+
+  /* TABS */
+  .lr-tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .lr-tab {
+    padding: 14px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    background: none;
+    border: none;
+    color: var(--color-text-secondary);
+    border-bottom: 2px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .lr-tab.active {
+    color: #1B5E3F;
+    border-bottom: 2px solid #1B5E3F;
+    background: var(--color-background-secondary);
+  }
+
+  /* FORM BODY */
+  .lr-form-body {
+    padding: 28px 28px 24px;
+  }
+
+  .lr-form-title {
+    font-size: 20px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .lr-form-sub {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    margin-bottom: 24px;
+    line-height: 1.6;
+  }
+
+  /* FIELDS */
+  .lr-field {
+    margin-bottom: 16px;
+  }
+
+  .lr-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+  }
+
+  .lr-input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .lr-input-icon {
+    position: absolute;
+    right: 12px;
+    width: 16px;
+    height: 16px;
+    color: var(--color-text-secondary);
+    pointer-events: none;
+  }
+
+  .lr-input-icon svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-text-secondary);
+  }
+
+  .lr-input {
+    width: 100%;
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 40px 10px 12px;
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
+    outline: none;
+    transition: border-color 0.2s;
+  }
+
+  .lr-input:focus {
+    border-color: #1B5E3F;
+    box-shadow: 0 0 0 3px #E8F4F0;
+  }
+
+  .lr-input::placeholder {
+    color: var(--color-text-tertiary);
+  }
+
+  .lr-eye-btn {
+    position: absolute;
+    left: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: center;
+  }
+
+  .lr-eye-btn svg {
+    width: 16px;
+    height: 16px;
+    fill: var(--color-text-secondary);
+  }
+
+  /* DIVIDER */
+  .lr-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+
+  /* FORGOT */
+  .lr-forgot {
+    text-align: left;
+    margin-top: -8px;
+    margin-bottom: 16px;
+  }
+
+  .lr-forgot a {
+    font-size: 12px;
+    color: #1B5E3F;
+    text-decoration: none;
+  }
+
+  .lr-forgot a:hover {
+    text-decoration: underline;
+  }
+
+  /* SUBMIT */
+  .lr-submit {
+    width: 100%;
+    background: #1B5E3F;
+    color: #E8F4F0;
+    border: none;
+    padding: 12px;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    margin-top: 4px;
+    transition: background 0.2s;
+  }
+
+  .lr-submit:hover {
+    background: #0F3D28;
+  }
+
+  .lr-submit:active {
+    transform: scale(0.99);
+  }
+
+  /* DIVIDER LINE */
+  .lr-or {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 20px 0;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+  }
+
+  .lr-or::before,
+  .lr-or::after {
+    content: '';
+    flex: 1;
+    height: 0.5px;
+    background: var(--color-border-tertiary);
+  }
+
+  /* SOCIAL */
+  .lr-social-btn {
+    width: 100%;
+    background: var(--color-background-secondary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-md);
+    padding: 10px;
+    font-size: 13px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    color: var(--color-text-primary);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+
+  .lr-social-btn:hover {
+    background: var(--color-background-tertiary);
+  }
+
+  .lr-social-btn svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* TERMS */
+  .lr-terms {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    text-align: center;
+    margin-top: 16px;
+    line-height: 1.6;
+  }
+
+  .lr-terms a {
+    color: #1B5E3F;
+    text-decoration: none;
+  }
+
+  /* SELECT */
+  .lr-select {
+    width: 100%;
+    border: 0.5px solid var(--color-border-secondary);
+    border-radius: var(--border-radius-md);
+    padding: 10px 40px 10px 12px;
+    font-size: 14px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background: var(--color-background-primary);
+    color: var(--color-text-primary);
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+  }
+
+  .lr-select:focus {
+    border-color: #1B5E3F;
+    box-shadow: 0 0 0 3px #E8F4F0;
+  }
+
+  /* PASSWORD STRENGTH */
+  .lr-strength {
+    margin-top: 6px;
+  }
+
+  .lr-strength-bars {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 4px;
+  }
+
+  .lr-bar {
+    flex: 1;
+    height: 3px;
+    border-radius: 2px;
+    background: var(--color-border-tertiary);
+    transition: background 0.3s;
+  }
+
+  .lr-bar.active-weak {
+    background: #E24B4A;
+  }
+
+  .lr-bar.active-medium {
+    background: #EF9F27;
+  }
+
+  .lr-bar.active-strong {
+    background: #639922;
+  }
+
+  .lr-strength-label {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+
+  /* PANEL TOGGLE */
+  .lr-panel {
+    display: none;
+  }
+
+  .lr-panel.visible {
+    display: block;
+  }
+
+  /* FOOTER */
+  .lr-footer {
+    background: var(--color-background-primary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding: 14px 2rem;
+    text-align: center;
+    font-size: 11px;
+    color: var(--color-text-secondary);
+  }
+</style>
+
+<div class="lr-root">
+  <h2 class="sr-only" style="position:absolute;left:-9999px">صفحة تسجيل الدخول وإنشاء حساب</h2>
+
+  <!-- NAV -->
+  <nav class="lr-nav">
+    <div class="lr-logo">
+      <div class="lr-logo-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+        </svg>
+      </div>
+      منصة الشكاوى
+    </div>
+    <button class="lr-nav-back" onclick="window.location.href='complaints_platform_homepage.html'">
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+      </svg>
+      العودة للرئيسية
+    </button>
+  </nav>
+
+  <!-- BODY -->
+  <div class="lr-body">
+    <div class="lr-card">
+      <!-- TABS -->
+      <div class="lr-tabs">
+        <button class="lr-tab active" id="tab-login" onclick="switchTab('login')">تسجيل الدخول</button>
+        <button class="lr-tab" id="tab-register" onclick="switchTab('register')">إنشاء حساب</button>
+      </div>
+
+      <!-- LOGIN PANEL -->
+      <div class="lr-panel visible" id="panel-login">
+        <div class="lr-form-body">
+
+
+          <div class="lr-field">
+            <label class="lr-label">البريد الإلكتروني أو رقم الهاتف</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </span>
+              <input class="lr-input" type="text" placeholder="example@email.com أو 05xxxxxxxx" />
+            </div>
+          </div>
+
+          <div class="lr-field">
+            <label class="lr-label">كلمة المرور</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+              </span>
+              <input class="lr-input" id="pw-login" type="password" placeholder="••••••••" />
+              <button class="lr-eye-btn" onclick="togglePw('pw-login', this)" title="إظهار/إخفاء">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <div class="lr-forgot">
+            <a href="#" onclick="sendPrompt('كيف يمكنني استعادة كلمة المرور؟')">نسيت كلمة المرور؟</a>
+          </div>
+
+          <button class="lr-submit" onclick="window.location.href='homeUser.html'">
+            تسجيل الدخول
+          </button>
+
+
+
+          <div class="lr-terms">
+            بتسجيل الدخول، أنت توافق على
+            <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- REGISTER PANEL -->
+      <div class="lr-panel" id="panel-register">
+        <div class="lr-form-body">
+          <div class="lr-form-title">إنشاء حساب جديد</div>
+          <div class="lr-form-sub">أنشئ حسابك مجاناً لتقديم شكاواك ومتابعتها</div>
+
+          <div class="lr-row">
+            <div class="lr-field">
+              <label class="lr-label">الاسم الأول</label>
+              <div class="lr-input-wrap">
+                <span class="lr-input-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg>
+                </span>
+                <input class="lr-input" type="text" placeholder="محمد" />
+              </div>
+            </div>
+            <div class="lr-field">
+              <label class="lr-label">اسم العائلة</label>
+              <div class="lr-input-wrap">
+                <span class="lr-input-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
+                  </svg>
+                </span>
+                <input class="lr-input" type="text" placeholder="العمري" />
+              </div>
+            </div>
+          </div>
+
+          <div class="lr-field">
+            <label class="lr-label">البريد الإلكتروني</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z" />
+                </svg>
+              </span>
+              <input class="lr-input" type="email" placeholder="example@email.com" />
+            </div>
+          </div>
+
+          <div class="lr-field">
+            <label class="lr-label">رقم الهاتف</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z" />
+                </svg>
+              </span>
+              <input class="lr-input" type="tel" placeholder="05xxxxxxxx" />
+            </div>
+          </div>
+
+          <div class="lr-field">
+            <label class="lr-label">كلمة المرور</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z" />
+                </svg>
+              </span>
+              <input class="lr-input" id="pw-reg" type="password" placeholder="٨ أحرف على الأقل"
+                oninput="checkStrength(this.value)" />
+              <button class="lr-eye-btn" onclick="togglePw('pw-reg', this)" title="إظهار/إخفاء">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z" />
+                </svg>
+              </button>
+            </div>
+            <div class="lr-strength">
+              <div class="lr-strength-bars">
+                <div class="lr-bar" id="bar1"></div>
+                <div class="lr-bar" id="bar2"></div>
+                <div class="lr-bar" id="bar3"></div>
+                <div class="lr-bar" id="bar4"></div>
+              </div>
+              <div class="lr-strength-label" id="strength-label">أدخل كلمة المرور</div>
+            </div>
+          </div>
+
+          <div class="lr-field">
+            <label class="lr-label">الجهة أو القطاع</label>
+            <div class="lr-input-wrap">
+              <span class="lr-input-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                </svg>
+              </span>
+              <select class="lr-select">
+                <option value="" disabled selected>اختر الجهة...</option>
+                <option>جهة حكومية</option>
+                <option>قطاع خاص</option>
+                <option>مؤسسة تعليمية</option>
+                <option>مستشفى / صحة</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <button class="lr-submit" onclick="window.location.href='complaints_platform_homepage.html'">
+            إنشاء الحساب
+          </button>
+
+          <div class="lr-terms" style="margin-top: 14px;">
+            بإنشاء حساب، أنت توافق على
+            <a href="#">شروط الاستخدام</a> و<a href="#">سياسة الخصوصية</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="lr-footer">
+    © 2026 منصة الشكاوى · جميع الحقوق محفوظة
+  </div>
+</div>
+
+<script>
+  function switchTab(tab) {
+    document.getElementById('panel-login').classList.remove('visible');
+    document.getElementById('panel-register').classList.remove('visible');
+    document.getElementById('tab-login').classList.remove('active');
+    document.getElementById('tab-register').classList.remove('active');
+    document.getElementById('panel-' + tab).classList.add('visible');
+    document.getElementById('tab-' + tab).classList.add('active');
+  }
+
+  function togglePw(id, btn) {
+    const input = document.getElementById(id);
+    if (input.type === 'password') {
+      input.type = 'text';
+      btn.style.opacity = '1';
+    } else {
+      input.type = 'password';
+      btn.style.opacity = '0.5';
+    }
+  }
+
+  function checkStrength(val) {
+    const bars = ['bar1', 'bar2', 'bar3', 'bar4'];
+    const label = document.getElementById('strength-label');
+    bars.forEach(b => {
+      document.getElementById(b).className = 'lr-bar';
+    });
+
+    let score = 0;
+    if (val.length >= 8) score++;
+    if (/[A-Z]/.test(val) || /[a-z]/.test(val)) score++;
+    if (/\d/.test(val)) score++;
+    if (/[^A-Za-z0-9]/.test(val)) score++;
+
+    const cls = score <= 1 ? 'active-weak' : score <= 2 ? 'active-medium' : 'active-strong';
+    const labels = ['', 'ضعيفة', 'ضعيفة', 'متوسطة', 'قوية'];
+    const colors = ['', '#E24B4A', '#E24B4A', '#EF9F27', '#639922'];
+
+    for (let i = 0; i < score; i++) {
+      document.getElementById(bars[i]).classList.add(cls);
+    }
+    label.textContent = val.length === 0 ? 'أدخل كلمة المرور' : labels[score];
+    label.style.color = val.length === 0 ? 'var(--color-text-secondary)' : colors[score];
+  }
+</script>

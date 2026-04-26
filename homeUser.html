@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>لوحة التحكم - بوابة الانشغالات</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f8fafc;
+      --color-background-tertiary: #f1f5f9;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94a3b8;
+      --color-border-primary: #cbd5e1;
+      --color-border-secondary: #e2e8f0;
+      --color-border-tertiary: #f1f5f9;
+      --color-brand: #1B5E3F;
+      --color-brand-hover: #0F3D28;
+      --color-brand-light: #E8F4F0;
+      --border-radius-md: 8px;
+      --border-radius-lg: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--color-background-tertiary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    .c-nav {
+      background: var(--color-background-primary);
+      border-bottom: 1px solid var(--color-border-secondary);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    }
+
+    .c-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+
+    .c-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-brand);
+      border-radius: var(--border-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .c-logo-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--color-brand-light);
+    }
+
+    .c-nav-links {
+      display: flex;
+      gap: 24px;
+      align-items: center;
+    }
+
+    .c-nav-link {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+
+    .c-nav-link:hover,
+    .c-nav-link.active {
+      color: var(--color-brand);
+    }
+
+    .user-profile {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+    }
+
+    .user-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: var(--color-brand-light);
+      color: var(--color-brand);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 14px;
+      border: 1px solid var(--color-brand);
+    }
+
+    /* LAYOUT */
+    .c-main {
+      flex: 1;
+      padding: 40px 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .c-container {
+      width: 100%;
+      max-width: 1000px;
+    }
+
+    /* GREETING */
+    .dash-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 32px;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .dash-greeting h1 {
+      font-size: 24px;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .dash-greeting p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+
+    .dash-action-btn {
+      background: var(--color-brand);
+      color: white;
+      padding: 10px 20px;
+      border-radius: var(--border-radius-md);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.2s;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .dash-action-btn:hover {
+      background: var(--color-brand-hover);
+    }
+
+    /* STATS */
+    .dash-stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      margin-bottom: 32px;
+    }
+
+    .stat-card {
+      background: var(--color-background-primary);
+      border: 1px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 4px;
+    }
+
+    .stat-card.new::before {
+      background: #3B82F6;
+    }
+
+    .stat-card.pending::before {
+      background: #F59E0B;
+    }
+
+    .stat-card.closed::before {
+      background: #10B981;
+    }
+
+    .stat-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--border-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .stat-card.new .stat-icon {
+      background: #EFF6FF;
+      fill: #3B82F6;
+    }
+
+    .stat-card.pending .stat-icon {
+      background: #FEF3C7;
+      fill: #F59E0B;
+    }
+
+    .stat-card.closed .stat-icon {
+      background: #D1FAE5;
+      fill: #10B981;
+    }
+
+    .stat-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .stat-value {
+      font-size: 28px;
+      font-weight: 900;
+      color: var(--color-text-primary);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-text-secondary);
+    }
+
+    /* SECTION TITLE */
+    .section-title {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .section-title a {
+      font-size: 13px;
+      color: var(--color-brand);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .section-title a:hover {
+      text-decoration: underline;
+    }
+
+    /* RECENT LIST */
+    .recent-list {
+      background: var(--color-background-primary);
+      border: 1px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 0;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      overflow: hidden;
+    }
+
+    .recent-item {
+      display: flex;
+      align-items: center;
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--color-border-secondary);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .recent-item:last-child {
+      border-bottom: none;
+    }
+
+    .recent-item:hover {
+      background: var(--color-background-secondary);
+    }
+
+    .item-id {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-secondary);
+      width: 80px;
+    }
+
+    .item-title {
+      flex: 1;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-text-primary);
+    }
+
+    .item-date {
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      width: 100px;
+      text-align: center;
+      margin-left: 20px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .badge.new {
+      background: #EFF6FF;
+      color: #3B82F6;
+    }
+
+    .badge.pending {
+      background: #FEF3C7;
+      color: #D97706;
+    }
+
+    .badge.closed {
+      background: #D1FAE5;
+      color: #059669;
+    }
+
+    @media (max-width: 768px) {
+      .item-date {
+        display: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="c-nav">
+    <a href="homeUser.html" class="c-logo">
+      <div class="c-logo-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+        </svg>
+      </div>
+      منصة الشكاوى
+    </a>
+    <div class="c-nav-links">
+      <a href="complaints_platform_homepage.html" class="c-nav-link active">الرئيسية</a>
+      <a href="track_complaints.html" class="c-nav-link">متابعة الشكاوى</a>
+      <div class="user-profile">
+        <span style="font-size: 13px; font-weight: 600; color: var(--color-text-primary);">محمد ع.</span>
+        <div class="user-avatar">م</div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="c-main">
+    <div class="c-container">
+
+      <div class="dash-header">
+        <div class="dash-greeting">
+          <h1>أهلاً بك، محمد! 👋</h1>
+          <p>إليك ملخص سريع لنشاطاتك وشكاواك الحالية</p>
+        </div>
+        <a href="complaints.html" class="dash-action-btn">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path d="M12 5v14M5 12h14" />
+          </svg>
+          إنشاء شكوى جديدة
+        </a>
+      </div>
+
+      <div class="dash-stats">
+        <div class="stat-card pending">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z" />
+            </svg>
+          </div>
+          <div class="stat-value">1</div>
+          <div class="stat-label">شكوى قيد المعالجة حالياً</div>
+        </div>
+        <div class="stat-card closed">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+            </svg>
+          </div>
+          <div class="stat-value">4</div>
+          <div class="stat-label">الشكاوى المغلقة / المكتملة</div>
+        </div>
+        <div class="stat-card new">
+          <div class="stat-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9H7v-2h7v2zm3-4H7V6h10v2z" />
+            </svg>
+          </div>
+          <div class="stat-value">2</div>
+          <div class="stat-label">طلب جديد بانتظار المراجعة</div>
+        </div>
+      </div>
+
+      <div class="section-title">
+        آخر الشكاوى والمقترحات
+        <a href="track_complaints.html">عرض الكل ↗</a>
+      </div>
+
+      <div class="recent-list">
+        <a href="complaint_details.html" class="recent-item">
+          <div class="item-id">#C-104</div>
+          <div class="item-title">تأخر إصدار شهادة التكوين لمستوى التقني السامي</div>
+          <div class="item-date">اليوم</div>
+          <div class="badge pending">قيد المعالجة</div>
+        </a>
+        <a href="complaint_details.html" class="recent-item">
+          <div class="item-id">#C-099</div>
+          <div class="item-title">اقتراح تحديث منصة التسجيل عن بعد</div>
+          <div class="item-date">10 أبريل</div>
+          <div class="badge new">جديدة</div>
+        </a>
+        <a href="complaint_details.html" class="recent-item">
+          <div class="item-id">#C-042</div>
+          <div class="item-title">خلل في موقع استخراج كشوف النقاط</div>
+          <div class="item-date">26 مارس</div>
+          <div class="badge closed">مغلقة</div>
+        </a>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>

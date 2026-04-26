@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>تفاصيل الشكوى - بوابة الانشغالات</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f8fafc;
+      --color-background-tertiary: #f1f5f9;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94a3b8;
+      --color-border-primary: #cbd5e1;
+      --color-border-secondary: #e2e8f0;
+      --color-border-tertiary: #f1f5f9;
+      --color-brand: #1B5E3F;
+      --color-brand-hover: #0F3D28;
+      --color-brand-light: #E8F4F0;
+      --border-radius-md: 8px;
+      --border-radius-lg: 16px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--color-background-tertiary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    .c-nav {
+      background: var(--color-background-primary);
+      border-bottom: 1px solid var(--color-border-secondary);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .c-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 16px;
+      color: var(--color-text-primary);
+      text-decoration: none;
+    }
+
+    .c-logo-icon {
+      width: 32px;
+      height: 32px;
+      background: var(--color-brand);
+      border-radius: var(--border-radius-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .c-logo-icon svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--color-brand-light);
+    }
+
+    .c-nav-back {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+      background: none;
+      border: none;
+      font-family: 'Cairo', sans-serif;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    .c-nav-back:hover {
+      color: var(--color-brand);
+    }
+
+    /* MAIN */
+    .c-main {
+      flex: 1;
+      padding: 40px 2rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .c-container {
+      width: 100%;
+      max-width: 1100px;
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .c-container {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* PANELS */
+    .panel {
+      background: var(--color-background-primary);
+      border: 1px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 24px;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+      margin-bottom: 24px;
+    }
+
+    /* HEADER INFO */
+    .detail-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid var(--color-border-secondary);
+    }
+
+    .detail-id {
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-text-tertiary);
+      margin-bottom: 4px;
+      display: block;
+      letter-spacing: 0.5px;
+    }
+
+    .detail-title {
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+    }
+
+    .detail-meta-list {
+      display: flex;
+      gap: 16px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+    }
+
+    .detail-meta-item {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .badge {
+      display: inline-flex;
+      align-items: center;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 700;
+      white-space: nowrap;
+      height: fit-content;
+    }
+
+    .badge.pending {
+      background: #FEF3C7;
+      color: #D97706;
+    }
+
+    /* CONTENT DESCRIPTION */
+    .content-block h3 {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 12px;
+    }
+
+    .content-body {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      background: var(--color-background-tertiary);
+      padding: 16px;
+      border-radius: var(--border-radius-md);
+      margin-bottom: 24px;
+    }
+
+    /* REPLIES */
+    .reply-thread {
+      margin-top: 32px;
+      border-top: 1px solid var(--color-border-secondary);
+      padding-top: 24px;
+    }
+
+    .reply {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .reply-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #E2E8F0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-weight: 700;
+      font-size: 16px;
+      color: #64748B;
+    }
+
+    .reply.admin .reply-avatar {
+      background: var(--color-brand-light);
+      color: var(--color-brand);
+    }
+
+    .reply-content {
+      flex: 1;
+      background: var(--color-background-secondary);
+      padding: 16px;
+      border-radius: var(--border-radius-md);
+      border: 1px solid var(--color-border-secondary);
+    }
+
+    .reply-header {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    .reply-author {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .reply-date {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    .reply-text {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+      line-height: 1.6;
+    }
+
+    /* ADD REPLY BOX */
+    .add-reply {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      background: #f8fafc;
+      padding: 20px;
+      border-radius: var(--border-radius-md);
+      border: 1px dashed var(--color-border-primary);
+    }
+
+    .c-textarea {
+      width: 100%;
+      border: 1px solid var(--color-border-primary);
+      border-radius: var(--border-radius-md);
+      padding: 12px;
+      font-size: 14px;
+      font-family: 'Cairo', sans-serif;
+      resize: vertical;
+      min-height: 80px;
+    }
+
+    .c-textarea:focus {
+      border-color: var(--color-brand);
+      outline: none;
+    }
+
+    .reply-actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .btn-file {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 13px;
+      color: var(--color-text-secondary);
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-family: 'Cairo', sans-serif;
+      font-weight: 600;
+    }
+
+    .btn-file:hover {
+      color: var(--color-brand);
+    }
+
+    .btn-submit {
+      background: var(--color-brand);
+      color: #fff;
+      padding: 8px 16px;
+      border: none;
+      border-radius: var(--border-radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn-submit:hover {
+      background: var(--color-brand-hover);
+    }
+
+    /* TIMELINE */
+    .timeline {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      padding-right: 8px;
+      border-right: 2px solid var(--color-border-secondary);
+      margin-top: 16px;
+    }
+
+    .tl-item {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-right: 20px;
+    }
+
+    .tl-dot {
+      position: absolute;
+      right: -9px;
+      top: 0;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--color-background-primary);
+      border: 3px solid var(--color-border-primary);
+      z-index: 2;
+    }
+
+    .tl-item.active .tl-dot {
+      border-color: var(--color-brand);
+      background: var(--color-brand-light);
+      box-shadow: 0 0 0 4px #E8F4F0;
+    }
+
+    .tl-item.done .tl-dot {
+      border-color: #10B981;
+      background: #10B981;
+    }
+
+    .tl-time {
+      font-size: 11px;
+      color: var(--color-text-tertiary);
+      font-weight: 600;
+    }
+
+    .tl-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+    }
+
+    .tl-desc {
+      font-size: 12px;
+      color: var(--color-text-secondary);
+      line-height: 1.5;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAV -->
+  <nav class="c-nav">
+    <a href="homeUser.html" class="c-logo">
+      <div class="c-logo-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+        </svg>
+      </div>
+      بوابة الانشغالات
+    </a>
+    <a href="track_complaints.html" class="c-nav-back">
+      العودة للجدول
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24">
+        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
+      </svg>
+    </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="c-main">
+    <div class="c-container">
+
+      <!-- LEFT CONTENT: Details & Thread -->
+      <div class="left-col">
+        <div class="panel">
+          <div class="detail-header">
+            <div>
+              <span class="detail-id">رقم التذكرة: #C-104</span>
+              <h1 class="detail-title">تأخر إصدار شهادة التكوين لمستوى التقني السامي</h1>
+              <div class="detail-meta-list">
+                <div class="detail-meta-item">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                  </svg>
+                  26 أبريل 2026
+                </div>
+                <div class="detail-meta-item">
+                  <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path
+                      d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                  </svg>
+                  معهد التكوين المهني - بومرداس
+                </div>
+              </div>
+            </div>
+            <div class="badge pending">قيد المعالجة</div>
+          </div>
+
+          <div class="content-block">
+            <h3>نص الشكوى</h3>
+            <div class="content-body">
+              السلام عليكم ورحمة الله،
+              <br><br>
+              لقد أتممت مساري التكويني بنجاح وتوجت بمذكرة التخرج في دورة فيفري. وعلى الرغم من الوعود المتكررة بإصدار
+              شهادات التخرج في غضون شهر، إلا أننا لم نستلم الشهادات حتى الآن (التاريخ 26 أبريل). هذه الشهادة ضرورية جداً
+              لاستكمال ملف التوظيف الخاص بي.
+              <br><br>
+              أرجو منكم الإفادة حول موعد صدور الشهادات.
+            </div>
+          </div>
+
+          <div class="reply-thread">
+            <h3>الردود (1)</h3>
+
+            <div class="reply admin">
+              <div class="reply-avatar">م.إ</div>
+              <div class="reply-content">
+                <div class="reply-header">
+                  <span class="reply-author">مديرية التكوين - إدارة الشؤون بومرداس</span>
+                  <span class="reply-date">أمس، 10:30 صباحاً</span>
+                </div>
+                <div class="reply-text">
+                  مرحباً محمد، نتأسف على هذا التأخير. الإشكال الفني الذي كان حاصلاً في مديرية الدبلومات على مستوى
+                  الوزارة تم إصلاحه الأسبوع الماضي. سيتم طباعة والتوقيع على جميع شهادات المتخرجين لدورة فيفري بحلول يوم
+                  الخميس القادم. سنقوم بإشعارك فور جاهزيتها للاستلام.
+                </div>
+              </div>
+            </div>
+
+            <!-- ADD REPLY -->
+            <div class="add-reply">
+              <textarea class="c-textarea" placeholder="اكتب تعقيباً أو استفساراً جديداً للإدارة..."></textarea>
+              <div class="reply-actions">
+                <button class="btn-file">
+                  <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <path
+                      d="M15.172 7l-6.586 6.586a2 2 0 102.828 2.828l6.414-6.586a4 4 0 00-5.656-5.656l-6.415 6.585a6 6 0 108.486 8.486L20.5 13" />
+                  </svg>
+                  إرفاق وثيقة
+                </button>
+                <button class="btn-submit">إرسال الرد</button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT COL: Timeline Info -->
+      <div class="right-col">
+        <div class="panel">
+          <h3 style="font-size: 15px; font-weight: 700; color: var(--color-text-primary); margin-bottom: 24px;">حالة
+            المعالجة</h3>
+
+          <div class="timeline">
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-time">26 أبريل - 08:15 ص</div>
+              <div class="tl-title">تسجيل الشكوى</div>
+              <div class="tl-desc">تم استلام الشكوى بنجاح وتسجيلها في النظام.</div>
+            </div>
+
+            <div class="tl-item done">
+              <div class="tl-dot"></div>
+              <div class="tl-time">26 أبريل - 09:30 ص</div>
+              <div class="tl-title">المراجعة الأولية</div>
+              <div class="tl-desc">تم التوجيه نحو الإدارة الفرعية المعنية (الشهادات).</div>
+            </div>
+
+            <div class="tl-item active">
+              <div class="tl-dot"></div>
+              <div class="tl-time">الآن</div>
+              <div class="tl-title">قيد المعالجة (تفاعل جاري)</div>
+              <div class="tl-desc">تم الرد بواسطة الإدارة وبانتظار حل نهائي.</div>
+            </div>
+
+            <div class="tl-item">
+              <div class="tl-dot"></div>
+              <div class="tl-time">معلقة</div>
+              <div class="tl-title">إغلاق الشكوى</div>
+              <div class="tl-desc">سيتم الإغلاق بعد تأكيد تسليم الشهادة.</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </main>
+</body>
+
+</html>

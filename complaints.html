@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>تقديم شكوى - بوابة الانشغالات</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&display=swap');
+    
+    :root {
+      --color-background-primary: #ffffff;
+      --color-background-secondary: #f8fafc;
+      --color-background-tertiary: #f1f5f9;
+      --color-text-primary: #0f172a;
+      --color-text-secondary: #475569;
+      --color-text-tertiary: #94a3b8;
+      --color-border-primary: #cbd5e1;
+      --color-border-secondary: #e2e8f0;
+      --color-border-tertiary: #f1f5f9;
+      --color-brand: #1B5E3F;
+      --color-brand-hover: #0F3D28;
+      --color-brand-light: #E8F4F0;
+      --border-radius-md: 8px;
+      --border-radius-lg: 16px;
+    }
+
+    * { margin:0; padding:0; box-sizing:border-box; }
+    
+    body {
+      font-family: 'Cairo', sans-serif;
+      background: var(--color-background-tertiary);
+      color: var(--color-text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAV */
+    .c-nav {
+      background: var(--color-background-primary);
+      border-bottom: 1px solid var(--color-border-secondary);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+    }
+    .c-logo {
+      display: flex; align-items: center; gap: 10px;
+      font-weight: 700; font-size: 16px;
+      color: var(--color-text-primary); text-decoration: none;
+    }
+    .c-logo-icon {
+      width: 32px; height: 32px;
+      background: var(--color-brand);
+      border-radius: var(--border-radius-md);
+      display: flex; align-items: center; justify-content: center;
+    }
+    .c-logo-icon svg { width: 18px; height: 18px; fill: var(--color-brand-light); }
+    .c-nav-back {
+      font-size: 14px; color: var(--color-text-secondary);
+      display: flex; align-items: center; gap: 6px;
+      cursor: pointer; background: none; border: none;
+      font-family: 'Cairo', sans-serif;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.2s;
+    }
+    .c-nav-back:hover { color: var(--color-brand); }
+
+    /* LAYOUT */
+    .c-main {
+      flex: 1;
+      padding: 40px 16px;
+      display: flex;
+      justify-content: center;
+    }
+    .c-container {
+      width: 100%;
+      max-width: 640px;
+    }
+    .c-header {
+      margin-bottom: 24px;
+      text-align: center;
+    }
+    .c-header h1 {
+      font-size: 26px;
+      color: var(--color-brand);
+      margin-bottom: 8px;
+    }
+    .c-header p {
+      font-size: 14px;
+      color: var(--color-text-secondary);
+    }
+    
+    .c-card {
+      background: var(--color-background-primary);
+      border: 1px solid var(--color-border-secondary);
+      border-radius: var(--border-radius-lg);
+      padding: 32px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.05);
+    }
+
+    /* FORM ELEMENTS */
+    .c-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+    .c-field {
+      margin-bottom: 20px;
+    }
+    .c-label {
+      display: block;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-text-primary);
+      margin-bottom: 8px;
+    }
+    .c-input, .c-select, .c-textarea {
+      width: 100%;
+      border: 1px solid var(--color-border-primary);
+      border-radius: var(--border-radius-md);
+      padding: 12px 14px;
+      font-size: 14px;
+      font-family: 'Cairo', sans-serif;
+      background: var(--color-background-primary);
+      color: var(--color-text-primary);
+      outline: none;
+      transition: all 0.2s;
+    }
+    .c-select {
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%23475569'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'%3E%3C/path%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: left 12px center;
+      background-size: 16px;
+      cursor: pointer;
+    }
+    .c-textarea {
+      resize: vertical;
+      min-height: 120px;
+    }
+    .c-input:focus, .c-select:focus, .c-textarea:focus {
+      border-color: var(--color-brand);
+      box-shadow: 0 0 0 3px var(--color-brand-light);
+    }
+
+    .c-file-upload {
+      border: 2px dashed var(--color-border-primary);
+      border-radius: var(--border-radius-md);
+      padding: 24px;
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: var(--color-background-secondary);
+    }
+    .c-file-upload:hover {
+      border-color: var(--color-brand);
+      background: var(--color-brand-light);
+    }
+    .c-file-upload svg {
+      width: 32px;
+      height: 32px;
+      fill: var(--color-text-tertiary);
+      margin-bottom: 8px;
+    }
+
+    .c-submit {
+      width: 100%;
+      background: var(--color-brand);
+      color: #fff;
+      border: none;
+      padding: 14px;
+      border-radius: var(--border-radius-md);
+      font-size: 15px;
+      font-weight: 700;
+      font-family: 'Cairo', sans-serif;
+      cursor: pointer;
+      margin-top: 10px;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+    }
+    .c-submit:hover { background: var(--color-brand-hover); }
+
+    /* FOOTER */
+    .c-footer {
+      background: var(--color-background-primary);
+      border-top: 1px solid var(--color-border-secondary);
+      padding: 16px;
+      text-align: center;
+      font-size: 12px;
+      color: var(--color-text-secondary);
+    }
+
+    @media (max-width: 600px) {
+      .c-row { grid-template-columns: 1fr; gap: 0; }
+      .c-row .c-field { margin-bottom: 20px; }
+      .c-card { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="c-nav">
+    <a href="complaints_platform_homepage.html" class="c-logo">
+      <div class="c-logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+      </div>
+      منصة الشكاوى
+    </a>
+    <a href="complaints_platform_homepage.html" class="c-nav-back">
+      العودة للرئيسية
+      <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/></svg>
+    </a>
+  </nav>
+
+  <!-- MAIN -->
+  <main class="c-main">
+    <div class="c-container">
+      <div class="c-header">
+        <h1>تقديم شكوى أو مقترح</h1>
+        <p>يرجى تعبئة النموذج أدناه بدقة لنتمكن من معالجة طلبك بأسرع وقت</p>
+      </div>
+      
+      <div class="c-card">
+        <form onsubmit="event.preventDefault(); window.location.href='complaints_platform_homepage.html';">
+          <div class="c-field">
+            <label class="c-label">موضوع الشكوى</label>
+            <input type="text" class="c-input" placeholder="اكتب عنواناً مختصراً لشكواك" required />
+          </div>
+
+          <div class="c-row">
+            <div class="c-field">
+              <label class="c-label">التصنيف</label>
+              <select class="c-select" required>
+                <option value="" disabled selected>اختر التصنيف...</option>
+                <option>إدارية</option>
+                <option>بيداغوجية</option>
+                <option>تقنية / خدمات رقمية</option>
+                <option>مرافق ومعدات</option>
+                <option>اقتراح تطويري</option>
+              </select>
+            </div>
+            <div class="c-field">
+              <label class="c-label">الجهة المعنية</label>
+              <select class="c-select" required>
+                <option value="" disabled selected>اختر الجهة...</option>
+                <option>الإدارة المركزية</option>
+                <option>مديرية التكوين المهني لولايتك</option>
+                <option>معهد التكوين</option>
+                <option>أخرى</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="c-field">
+            <label class="c-label">تفاصيل الشكوى</label>
+            <textarea class="c-textarea" placeholder="يرجى كتابة كافة التفاصيل التي قد تساعدنا في فهم وحل المشكلة..." required></textarea>
+          </div>
+
+          <div class="c-field">
+            <label class="c-label">المرفقات (اختياري)</label>
+            <div class="c-file-upload" onclick="document.getElementById('file-input').click()">
+              <svg viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+              <div style="font-size: 13px; font-weight: 600; color: var(--color-text-primary);">اضغط هنا لرفع الوثائق والصور</div>
+              <div style="font-size: 11px; margin-top: 4px; color: var(--color-text-secondary);">الحد الأقصى للملف: 5 ميغابايت (PDF, JPG, PNG)</div>
+              <input type="file" id="file-input" style="display:none;" multiple />
+            </div>
+          </div>
+
+          <button type="submit" class="c-submit">
+            إرسال الشكوى
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="22" y1="2" x2="11" y2="13"></line>
+              <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+            </svg>
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+
+  <footer class="c-footer">
+    © 2026 منصة إدارة الشكاوى والمقترحات · الجمهورية الجزائرية الديمقراطية الشعبية
+  </footer>
+
+</body>
+</html>

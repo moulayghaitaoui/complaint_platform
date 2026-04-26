@@ -1,0 +1,1037 @@
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;900&family=Tajawal:wght@400;500;700&display=swap');
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  .hp-root {
+    direction: rtl;
+    font-family: 'Cairo', sans-serif;
+    background: var(--color-background-tertiary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+  }
+
+  /* NAV */
+  .hp-nav {
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 0 2rem;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .hp-logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+    font-size: 18px;
+    color: var(--color-text-primary);
+  }
+
+  .hp-logo-icon {
+    width: 32px;
+    height: 32px;
+    background: #1B5E3F;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hp-logo-icon svg {
+    width: 18px;
+    height: 18px;
+    fill: #E8F4F0;
+  }
+
+  .hp-nav-links {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    list-style: none;
+  }
+
+  .hp-nav-links a {
+    text-decoration: none;
+    font-size: 14px;
+    color: var(--color-text-secondary);
+    font-weight: 500;
+  }
+
+  .hp-nav-links a:hover {
+    color: var(--color-text-primary);
+  }
+
+  .hp-nav-cta {
+    background: #1B5E3F;
+    color: #E8F4F0 !important;
+    padding: 6px 16px;
+    border-radius: var(--border-radius-md);
+    font-size: 13px !important;
+    font-weight: 600 !important;
+  }
+
+  /* HERO */
+  .hp-hero {
+    background: var(--color-background-primary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+    padding: 64px 2rem 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hp-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #E8F4F0;
+    color: #1B5E3F;
+    border: 0.5px solid #A8D5C7;
+    border-radius: 100px;
+    padding: 4px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 20px;
+  }
+
+  .hp-hero h1 {
+    font-size: 38px;
+    font-weight: 900;
+    line-height: 1.3;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .hp-hero h1 span {
+    color: #1B5E3F;
+  }
+
+  .hp-hero p {
+    font-size: 16px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    max-width: 480px;
+    margin: 0 auto 36px;
+  }
+
+  .hp-hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: #1B5E3F;
+    color: #E8F4F0;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary:hover {
+    background: #0F3D28;
+  }
+
+  .btn-secondary {
+    background: transparent;
+    color: var(--color-text-primary);
+    border: 0.5px solid var(--color-border-primary);
+    padding: 12px 28px;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    font-weight: 600;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-secondary:hover {
+    background: var(--color-background-secondary);
+  }
+
+  .hp-hero-stats {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    margin-top: 44px;
+    padding-top: 32px;
+    border-top: 0.5px solid var(--color-border-tertiary);
+    flex-wrap: wrap;
+  }
+
+  .hp-stat {
+    text-align: center;
+  }
+
+  .hp-stat-num {
+    font-size: 26px;
+    font-weight: 900;
+    color: var(--color-text-primary);
+  }
+
+  .hp-stat-label {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    margin-top: 2px;
+  }
+
+  .hp-stat-divider {
+    width: 0.5px;
+    height: 40px;
+    background: var(--color-border-tertiary);
+  }
+
+  /* TRACK BAR */
+  .hp-track-bar {
+    background: #EAF3DE;
+    border-bottom: 0.5px solid #C0DD97;
+    padding: 14px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  .hp-track-label {
+    font-size: 13px;
+    color: #3B6D11;
+    font-weight: 600;
+  }
+
+  .hp-track-input {
+    border: 0.5px solid #97C459;
+    border-radius: var(--border-radius-md);
+    padding: 6px 14px;
+    font-size: 13px;
+    font-family: 'Cairo', sans-serif;
+    direction: rtl;
+    background: white;
+    width: 180px;
+    color: var(--color-text-primary);
+  }
+
+  .hp-track-btn {
+    background: #3B6D11;
+    color: #EAF3DE;
+    border: none;
+    padding: 7px 18px;
+    border-radius: var(--border-radius-md);
+    font-size: 13px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+  }
+
+  /* FEATURES */
+  .hp-section {
+    padding: 52px 2rem;
+  }
+
+  .hp-section-title {
+    text-align: center;
+    margin-bottom: 36px;
+  }
+
+  .hp-section-title h2 {
+    font-size: 26px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 8px;
+  }
+
+  .hp-section-title p {
+    font-size: 14px;
+    color: var(--color-text-secondary);
+  }
+
+  .hp-features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hp-feat-card {
+    background: var(--color-background-primary);
+    border: 0.5px solid var(--color-border-tertiary);
+    border-radius: var(--border-radius-lg);
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .hp-feat-icon {
+    width: 44px;
+    height: 44px;
+    border-radius: var(--border-radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 12px;
+  }
+
+  .hp-feat-icon svg {
+    width: 22px;
+    height: 22px;
+  }
+
+  .hp-feat-card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 6px;
+  }
+
+  .hp-feat-card p {
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+  }
+
+  /* HOW IT WORKS */
+  .hp-steps {
+    background: var(--color-background-primary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    border-bottom: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .hp-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 0;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  .hp-step {
+    padding: 24px 16px;
+    text-align: center;
+    position: relative;
+  }
+
+  .hp-step:not(:last-child) {
+    border-left: 0.5px solid var(--color-border-tertiary);
+  }
+
+  .hp-step-num {
+    width: 32px;
+    height: 32px;
+    background: #E8F4F0;
+    color: #1B5E3F;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 13px;
+    font-weight: 700;
+    margin: 0 auto 10px;
+    border: 0.5px solid #A8D5C7;
+  }
+
+  .hp-step h3 {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 4px;
+  }
+
+  .hp-step p {
+    font-size: 11px;
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+  }
+
+  /* STATUS LEGEND */
+  .hp-status-section {
+    padding: 40px 2rem;
+  }
+
+  .hp-status-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 12px;
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .hp-status-card {
+    border-radius: var(--border-radius-lg);
+    padding: 16px;
+    text-align: center;
+    border: 0.5px solid;
+  }
+
+  .hp-status-card.solved {
+    background: #EAF3DE;
+    border-color: #97C459;
+  }
+
+  .hp-status-card.pending {
+    background: #FAEEDA;
+    border-color: #EF9F27;
+  }
+
+  .hp-status-card.rejected {
+    background: #FCEBEB;
+    border-color: #F09595;
+  }
+
+  .hp-status-card.reviewing {
+    background: #E8F4F0;
+    border-color: #A8D5C7;
+  }
+
+  .hp-status-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin: 0 auto 8px;
+  }
+
+  .solved .hp-status-dot {
+    background: #3B6D11;
+  }
+
+  .pending .hp-status-dot {
+    background: #854F0B;
+  }
+
+  .rejected .hp-status-dot {
+    background: #A32D2D;
+  }
+
+  .reviewing .hp-status-dot {
+    background: #1B5E3F;
+  }
+
+  .hp-status-card h4 {
+    font-size: 13px;
+    font-weight: 700;
+  }
+
+  .solved h4 {
+    color: #3B6D11;
+  }
+
+  .pending h4 {
+    color: #854F0B;
+  }
+
+  .rejected h4 {
+    color: #A32D2D;
+  }
+
+  .reviewing h4 {
+    color: #1B5E3F;
+  }
+
+  .hp-status-card p {
+    font-size: 11px;
+    margin-top: 3px;
+  }
+
+  .solved p {
+    color: #27500A;
+  }
+
+  .pending p {
+    color: #633806;
+  }
+
+  .rejected p {
+    color: #791F1F;
+  }
+
+  .reviewing p {
+    color: #0F3D28;
+  }
+
+  /* CTA */
+  .hp-cta {
+    background: #1B5E3F;
+    padding: 48px 2rem;
+    text-align: center;
+  }
+
+  .hp-cta h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #E8F4F0;
+    margin-bottom: 10px;
+  }
+
+  .hp-cta p {
+    font-size: 14px;
+    color: #CCCCCC;
+    margin-bottom: 24px;
+  }
+
+  .btn-white {
+    background: white;
+    color: #1B5E3F;
+    border: none;
+    padding: 12px 28px;
+    border-radius: var(--border-radius-md);
+    font-size: 15px;
+    font-weight: 700;
+    font-family: 'Cairo', sans-serif;
+    cursor: pointer;
+  }
+
+  /* FOOTER */
+  .hp-footer {
+    background: var(--color-background-primary);
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding: 0;
+    margin-top: 32px;
+  }
+
+  .hp-footer-content {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 32px;
+    padding: 48px 2rem 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .hp-footer-section h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--color-text-primary);
+    margin-bottom: 16px;
+  }
+
+  .hp-footer-section ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .hp-footer-section a {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .hp-footer-section a:hover {
+    color: #1B5E3F;
+  }
+
+  .hp-footer-about p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .hp-footer-social {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+    justify-content: flex-end;
+  }
+
+  .hp-footer-social a {
+    width: 36px;
+    height: 36px;
+    border-radius: var(--border-radius-md);
+    background: #E8F4F0;
+    color: #1B5E3F;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    transition: all 0.3s ease;
+  }
+
+  .hp-footer-social a:hover {
+    background: #1B5E3F;
+    color: #E8F4F0;
+  }
+
+  .hp-footer-contact p {
+    font-size: 13px;
+    color: var(--color-text-secondary);
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+
+  .hp-footer-bottom {
+    border-top: 0.5px solid var(--color-border-tertiary);
+    padding: 20px 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 12px;
+    color: var(--color-text-secondary);
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+
+  .hp-footer-bottom-links {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .hp-footer-bottom-links a {
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    font-size: 12px;
+    transition: color 0.3s ease;
+  }
+
+  .hp-footer-bottom-links a:hover {
+    color: #1B5E3F;
+  }
+
+  @media (max-width: 768px) {
+    .hp-footer-content {
+      grid-template-columns: 1fr;
+      gap: 24px;
+      padding: 32px 2rem;
+    }
+
+    .hp-footer-social {
+      justify-content: flex-start;
+    }
+
+    .hp-footer-bottom {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+    .hp-footer-bottom-links {
+      width: 100%;
+      flex-wrap: wrap;
+    }
+  }
+
+  /* HEADER SEAL */
+  .hp-header-seal {
+    background: linear-gradient(135deg, #F5F9F7 0%, #E8F4F0 100%);
+    padding: 32px 2rem;
+    text-align: center;
+    border-bottom: 3px solid #6FBD97;
+  }
+
+  .hp-seal-layout {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto;
+    gap: 16px;
+  }
+
+  .hp-seal-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    flex: 1;
+  }
+
+  .hp-seal-logo-side {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+  }
+
+  .hp-seal-layout svg {
+    width: 100%;
+    height: 100%;
+    stroke: #1B5E3F;
+  }
+
+  .hp-seal-layout svg path,
+  .hp-seal-layout svg circle {
+    stroke: #1B5E3F;
+    fill: #1B5E3F;
+  }
+
+  .hp-seal-title {
+    font-size: 22px;
+    font-weight: 700;
+    color: #1B5E3F;
+    margin-bottom: 8px;
+    letter-spacing: 0.5px;
+  }
+
+  .hp-seal-subtitle {
+    font-size: 14px;
+    color: #2D7F5F;
+    line-height: 1.8;
+    margin-bottom: 12px;
+  }
+
+  .hp-seal-description {
+    font-size: 13px;
+    color: #4A9D7F;
+    line-height: 1.6;
+    margin-bottom: 0;
+    font-weight: 500;
+  }
+
+  @media (max-width: 768px) {
+    .hp-header-seal {
+      padding: 24px 2rem;
+    }
+
+    .hp-seal-layout {
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .hp-seal-logo-side {
+      width: 80px;
+    }
+
+    .hp-seal-title {
+      font-size: 18px;
+    }
+
+    .hp-seal-subtitle {
+      font-size: 13px;
+    }
+  }
+</style>
+
+<div class="hp-root">
+  <h2 class="sr-only" style="position:absolute;left:-9999px">الصفحة الرئيسية لمنصة إدارة الشكاوى</h2>
+
+  <!-- HEADER SEAL -->
+  <header class="hp-header-seal">
+    <div class="hp-seal-layout">
+      <!-- الشعار على اليمين -->
+      <div class="hp-seal-logo-side">
+        <img src="logomfep.png" alt="الشعار الرسمي للوزارة"
+          style="width: 100px; height: 100px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));" />
+      </div>
+
+      <!-- النصوص في المنتصف -->
+      <div class="hp-seal-text">
+        <h1 class="hp-seal-title">الجمهورية الجزائرية الديمقراطية الشعبية</h1>
+        <p class="hp-seal-subtitle">وزارة التكوين والتعليم المهنيين</p>
+        <p class="hp-seal-description">منصة إدارة الشكاوى والمقترحات</p>
+      </div>
+
+      <!-- العلم على اليسار -->
+      <div class="hp-seal-logo-side">
+        <img src="algerie_drapeau_flottant.gif" alt="علم الجزائر"
+          style="width: 100px; height: 80px; object-fit: contain; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.1));" />
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV -->
+  <nav class="hp-nav">
+    <div class="hp-logo">
+      <div class="hp-logo-icon">
+        <svg viewBox="0 0 24 24">
+          <path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z" />
+        </svg>
+      </div>
+      منصة الشكاوى
+    </div>
+    <ul class="hp-nav-links">
+      <li><a href="complaints.html">تقديم شكوى</a></li>
+      <li><a href="homeUser.html" onclick="sendPrompt('أريد الاطلاع على صفحة تتبع الشكاوى')">تتبع شكوى</a></li>
+      <li><a href="#" onclick="sendPrompt('أريد الاطلاع على لوحة تحكم الإدارة')">لوحة الإدارة</a></li>
+      <li><a href="login_register_page.html" class="hp-nav-cta">تسجيل الدخول ↗</a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hp-hero">
+    <div class="hp-hero-badge">
+      <span style="width:6px;height:6px;border-radius:50%;background:#1B5E3F;display:inline-block;"></span>
+      منصة رقمية موثوقة لإدارة الشكاوى
+    </div>
+    <h1>صوتك يُسمع، شكواك <span>تُحَل</span></h1>
+    <p>منصة متكاملة تُتيح لك تقديم شكواك ومتابعتها بكل سهولة وشفافية — في أي وقت، من أي مكان.</p>
+    <div class="hp-hero-actions">
+      <button class="btn-primary" onclick="window.location.href='complaints.html'">
+        <svg width="16" height="16" fill="#E8F4F0" viewBox="0 0 24 24">
+          <path d="M19 3H5c-1.1 0-2 .9-2 2v14l4-4h12c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9H7v-2h7v2zm3-4H7V6h10v2z" />
+        </svg>
+        تقديم شكوى
+      </button>
+      <button class="btn-secondary" onclick="sendPrompt(homeUser.html)">
+        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z" />
+        </svg>
+        تتبع شكوى
+      </button>
+    </div>
+    <div class="hp-hero-stats">
+      <div class="hp-stat">
+        <div class="hp-stat-num">48 س</div>
+        <div class="hp-stat-label">متوسط وقت المعالجة</div>
+      </div>
+      <div class="hp-stat-divider"></div>
+      <div class="hp-stat">
+        <div class="hp-stat-num">92%</div>
+        <div class="hp-stat-label">نسبة الحل الناجح</div>
+      </div>
+      <div class="hp-stat-divider"></div>
+      <div class="hp-stat">
+        <div class="hp-stat-num">+12000</div>
+        <div class="hp-stat-label">شكوى تمت معالجتها</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRACK BAR -->
+  <div class="hp-track-bar">
+    <span class="hp-track-label">تتبع شكواك مباشرةً:</span>
+    <input class="hp-track-input" type="text" placeholder="أدخل رمز الشكوى..." />
+    <button class="hp-track-btn">بحث</button>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="hp-section">
+    <div class="hp-section-title">
+      <h2>لماذا تختار منصتنا؟</h2>
+      <p>مصممة لتكون بسيطة وفعّالة وموثوقة</p>
+    </div>
+    <div class="hp-features-grid">
+      <div class="hp-feat-card">
+        <div class="hp-feat-icon" style="background:#E8F4F0;">
+          <svg viewBox="0 0 24 24" fill="#1B5E3F">
+            <path
+              d="M13 2.05v2.02c3.95.49 7 3.85 7 7.93 0 3.21-1.81 6-4.72 7.28L13 17v5h5l-1.22-1.22C19.91 19.07 22 15.76 22 12c0-5.18-3.95-9.45-9-9.95zM11 2.05C5.95 2.55 2 6.82 2 12c0 3.76 2.09 7.07 5.22 8.78L6 22h5V2.05z" />
+          </svg>
+        </div>
+        <h3>سرعة المعالجة</h3>
+        <p>يُعالج فريقنا الشكاوى خلال ٤٨ ساعة كحد أقصى</p>
+      </div>
+      <div class="hp-feat-card">
+        <div class="hp-feat-icon" style="background:#EAF3DE;">
+          <svg viewBox="0 0 24 24" fill="#3B6D11">
+            <path
+              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+          </svg>
+        </div>
+        <h3>شفافية كاملة</h3>
+        <p>تابع حالة شكواك في كل خطوة بشكل فوري</p>
+      </div>
+      <div class="hp-feat-card">
+        <div class="hp-feat-icon" style="background:#FAEEDA;">
+          <svg viewBox="0 0 24 24" fill="#854F0B">
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.31-8.86l-2.38-.91C9.37 10.02 9 9.46 9 8.83c0-.83.67-1.5 1.5-1.5.62 0 1.16.38 1.4.91L13.5 9l1.2-1.2C14.15 6.71 13.13 6 12 6c-1.65 0-3 1.35-3 3 0 1.32.85 2.44 2.07 2.85l2.38.91c.56.21.93.77.93 1.41 0 .83-.67 1.5-1.5 1.5-.73 0-1.35-.5-1.49-1.21L11 14.5l-1.41 1.41C10.18 17.14 11 17.67 12 17.83V19h2v-1.2c1.4-.28 2.5-1.54 2.5-3.08 0-1.34-.85-2.52-2.19-2.98z" />
+          </svg>
+        </div>
+        <h3>مجاني تماماً</h3>
+        <p>لا رسوم أو اشتراكات للمستخدمين</p>
+      </div>
+      <div class="hp-feat-card">
+        <div class="hp-feat-icon" style="background:#FBEAF0;">
+          <svg viewBox="0 0 24 24" fill="#993556">
+            <path
+              d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z" />
+          </svg>
+        </div>
+        <h3>تواصل مباشر</h3>
+        <p>تبادل الردود مع الإدارة داخل المنصة</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="hp-steps">
+    <div class="hp-section" style="padding-bottom: 0;">
+      <div class="hp-section-title">
+        <h2>كيف تعمل المنصة؟</h2>
+        <p>أربع خطوات بسيطة تُوصلك إلى الحل</p>
+      </div>
+    </div>
+    <div class="hp-steps-grid">
+      <div class="hp-step">
+        <div class="hp-step-num">1</div>
+        <h3>أنشئ حساباً</h3>
+        <p>سجّل بريدك وكلمة المرور في ثوانٍ</p>
+      </div>
+      <div class="hp-step">
+        <div class="hp-step-num">2</div>
+        <h3>أرسل شكواك</h3>
+        <p>أدخل التفاصيل وأرفق المستندات</p>
+      </div>
+      <div class="hp-step">
+        <div class="hp-step-num">3</div>
+        <h3>تابع الحالة</h3>
+        <p>راقب تقدم معالجة شكواك لحظةً بلحظة</p>
+      </div>
+      <div class="hp-step">
+        <div class="hp-step-num">4</div>
+        <h3>احصل على الحل</h3>
+        <p>يُبلَّغ فور صدور القرار النهائي</p>
+      </div>
+    </div>
+    <div style="height: 32px;"></div>
+  </section>
+
+  <!-- STATUS LEGEND -->
+  <section class="hp-status-section">
+    <div class="hp-section-title">
+      <h2>حالات الشكاوى</h2>
+      <p>نظام ألوان واضح يعكس مسار كل شكوى</p>
+    </div>
+    <div class="hp-status-cards">
+      <div class="hp-status-card solved">
+        <div class="hp-status-dot"></div>
+        <h4>تم الحل</h4>
+        <p>أُغلقت الشكوى بنجاح</p>
+      </div>
+      <div class="hp-status-card pending">
+        <div class="hp-status-dot"></div>
+        <h4>قيد المعالجة</h4>
+        <p>الفريق يعمل عليها</p>
+      </div>
+      <div class="hp-status-card rejected">
+        <div class="hp-status-dot"></div>
+        <h4>مرفوضة</h4>
+        <p>تم رفض الشكوى</p>
+      </div>
+      <div class="hp-status-card reviewing">
+        <div class="hp-status-dot"></div>
+        <h4>تحت المراجعة</h4>
+        <p>بانتظار التحقق</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="hp-cta">
+    <h2>هل لديك شكوى تريد تقديمها؟</h2>
+    <p>انضم إلى آلاف المستخدمين الذين حصلوا على حقوقهم عبر منصتنا</p>
+    <button class="btn-white" onclick="window.location.href='complaints.html'">ابدأ الآن ↗</button>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="hp-footer">
+    <div class="hp-footer-content">
+      <!-- عن المنصة -->
+      <div class="hp-footer-section hp-footer-about">
+        <h3>عن منصة الشكاوى</h3>
+        <p>منصة رقمية متخصصة في تلقي ومعالجة الشكاوى بكفاءة وشفافية تامة، توفر تجربة استخدام سهلة وآمنة للمواطنين.</p>
+        <div class="hp-footer-social">
+          <a href="#" title="فيسبوك">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+            </svg>
+          </a>
+          <a href="#" title="تويتر">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.953 4.57a10 10 0 002.856-3.515 10 10 0 01-2.747.747 4.5 4.5 0 002.007-2.475c-.951.555-2.005.959-3.119 1.184a4.5 4.5 0 00-7.674 4.1 12.76 12.76 0 01-9.306-4.715 4.5 4.5 0 001.393 6.019 4.48 4.48 0 01-2.04-.564v.06a4.5 4.5 0 003.605 4.413 4.504 4.504 0 01-2.034.077 4.5 4.5 0 004.204 3.12 9.04 9.04 0 01-5.607 1.933 9.78 9.78 0 01-1.385-.08 12.759 12.759 0 006.923 2.028c8.304 0 12.837-6.875 12.837-12.837 0-.196-.004-.39-.013-.583.88.635 1.646 1.429 2.247 2.342z" />
+            </svg>
+          </a>
+          <a href="#" title="إنستجرام">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0m5.521 12c0 3.048-2.473 5.521-5.521 5.521-3.048 0-5.521-2.473-5.521-5.521 0-3.048 2.473-5.521 5.521-5.521 3.048 0 5.521 2.473 5.521 5.521m1.443-5.666c0 .713-.578 1.291-1.291 1.291-.713 0-1.291-.578-1.291-1.291 0-.713.578-1.291 1.291-1.291.713 0 1.291.578 1.291 1.291m1.737-1.793c0 1.424-1.156 2.58-2.58 2.58-1.424 0-2.58-1.156-2.58-2.58 0-1.424 1.156-2.58 2.58-2.58 1.424 0 2.58 1.156 2.58 2.58" />
+            </svg>
+          </a>
+          <a href="#" title="يوتيوب">
+            <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24">
+              <path
+                d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+            </svg>
+          </a>
+        </div>
+      </div>
+
+      <!-- الروابط المهمة -->
+      <div class="hp-footer-section">
+        <h3>الروابط المهمة</h3>
+        <ul>
+          <li><a href="complaints.html">تقديم شكوى</a></li>
+          <li><a href="homeUser.html" onclick="sendPrompt('أريد الاطلاع على صفحة تتبع الشكاوى')">تتبع شكوى</a></li>
+          <li><a href="#" onclick="sendPrompt('أريد الاطلاع على لوحة تحكم الإدارة')">لوحة الإدارة</a></li>
+          <li><a href="#">الأسئلة الشائعة</a></li>
+          <li><a href="#">الدليل الإرشادي</a></li>
+        </ul>
+      </div>
+
+      <!-- المساعدة والدعم -->
+      <div class="hp-footer-section">
+        <h3>المساعدة والدعم</h3>
+        <ul>
+          <li><a href="#">مركز المساعدة</a></li>
+          <li><a href="#">الشروط والأحكام</a></li>
+          <li><a href="#">سياسة الخصوصية</a></li>
+          <li><a href="#">سياسة ملفات الارتباط</a></li>
+          <li><a href="#">تقرير الأمان</a></li>
+        </ul>
+      </div>
+
+      <!-- معلومات الاتصال -->
+      <div class="hp-footer-section hp-footer-contact">
+        <h3>اتصل بنا</h3>
+        <p>
+          <span style="font-weight:600;">📞</span>
+          <span>+213 555 123 456</span>
+        </p>
+        <p>
+          <span style="font-weight:600;">✉️</span>
+          <span>support@complaints.dz</span>
+        </p>
+        <p>
+          <span style="font-weight:600;">📍</span>
+          <span>شارع الدكتور عيسبو - بن عكنون - ولاية الجزائر</span>
+        </p>
+        <p>
+          <span style="font-weight:600;">🕐</span>
+          <span>السبت - الخميس: 9:00 صباحاً - 5:00 مساءً</span>
+        </p>
+      </div>
+    </div>
+
+    <!-- Bottom Bar -->
+    <div class="hp-footer-bottom">
+      <div>© ٢٠٢٦ منصة الشكاوى · جميع الحقوق محفوظة</div>
+      <div class="hp-footer-bottom-links">
+        <a href="#">سياسة الخصوصية</a>
+        <span style="color:var(--color-border-tertiary);">|</span>
+        <a href="#">الشروط والأحكام</a>
+        <span style="color:var(--color-border-tertiary);">|</span>
+        <a href="#">اتصل بنا</a>
+      </div>
+    </div>
+  </footer>
+</div>
