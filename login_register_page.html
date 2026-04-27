@@ -495,7 +495,7 @@
       <div class="lr-panel" id="panel-register">
         <div class="lr-form-body">
           <div class="lr-form-title">إنشاء حساب جديد</div>
-          <div class="lr-form-sub">أنشئ حسابك مجاناً لتقديم شكاواك ومتابعتها</div>
+
 
           <div class="lr-row">
             <div class="lr-field">
@@ -507,7 +507,7 @@
                       d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
                 </span>
-                <input class="lr-input" type="text" placeholder="محمد" />
+                <input class="lr-input" type="text" placeholder="مولاي" />
               </div>
             </div>
             <div class="lr-field">
@@ -519,7 +519,7 @@
                       d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                   </svg>
                 </span>
-                <input class="lr-input" type="text" placeholder="العمري" />
+                <input class="lr-input" type="text" placeholder="غيتاوي" />
               </div>
             </div>
           </div>
@@ -579,23 +579,38 @@
             </div>
           </div>
 
-          <div class="lr-field">
-            <label class="lr-label">الجهة أو القطاع</label>
-            <div class="lr-input-wrap">
-              <span class="lr-input-icon">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
-                </svg>
-              </span>
-              <select class="lr-select">
-                <option value="" disabled selected>اختر الجهة...</option>
-                <option>جهة حكومية</option>
-                <option>قطاع خاص</option>
-                <option>مؤسسة تعليمية</option>
-                <option>مستشفى / صحة</option>
-                <option>أخرى</option>
-              </select>
+          <div class="lr-row">
+            <div class="lr-field">
+              <label class="lr-label">الولاية</label>
+              <div class="lr-input-wrap">
+                <span class="lr-input-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" />
+                  </svg>
+                </span>
+                <select class="lr-select">
+                  <option value="" disabled selected>اختر الولاية...</option>
+                  <option>الجزائر</option>
+                  <option>وهران</option>
+                  <option>قسنطينة</option>
+                  <option>بومرداس</option>
+                  <option>ورقلة</option>
+                  <!-- Add more wiltayas as needed -->
+                </select>
+              </div>
+            </div>
+            <div class="lr-field">
+              <label class="lr-label">المؤسسة</label>
+              <div class="lr-input-wrap">
+                <span class="lr-input-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z" />
+                  </svg>
+                </span>
+                <input class="lr-input" type="text" placeholder="اسم المؤسسة" />
+              </div>
             </div>
           </div>
 
